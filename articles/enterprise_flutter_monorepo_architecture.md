@@ -38,11 +38,6 @@ blueprint-project-flutter/
 │       └── explorer/           # Presentation feature module
 ```
 
-### Why Package Isolation Matters:
-* **Zero UI Data Leakage:** UI widgets physically cannot access raw network clients or database drivers if the package imports are not exposed.
-* **Independent Testability:** `packages/explorer_repository` can be unit-tested in total isolation from the Flutter UI framework.
-* **Code Reusability:** 100% of code inside `packages/` is shared across all client app entry points.
-
 ---
 
 ## 2. Core Infrastructure & Result Pattern (`packages/core`)
@@ -76,38 +71,154 @@ abstract class BaseMapper<Entity, Dto> {
 
 ---
 
-## 3. Scoped On-Demand Dependency Injection
+## 3. Step-by-Step Feature Implementation Guide (6-Step Walkthrough)
 
-Instead of registering dozens of repositories in `main.dart`, we enforce **Contextual Scoped DI** at feature page boundaries:
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 1. API Layer (packages/feature_repository/lib/src/api/)    │
+│    Extends BaseApiService & returns Result<Data, Exception> │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+┌──────────────────────────────▼──────────────────────────────┐
+│ 2. Mapper Layer (packages/feature_repository/lib/src/mappers)│
+│    Extends BaseMapper<Entity, Dto>                          │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+┌──────────────────────────────▼──────────────────────────────┐
+│ 3. Repository Layer (packages/feature_repository/lib/src/)  │
+│    Extends BaseRepository & maps DTOs to Domain Entities   │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+┌──────────────────────────────▼──────────────────────────────┐
+│ 4. BLoC Layer (lib/features/feature/bloc/)                  │
+│    Emits Loading, Loaded, Error using result.fold()         │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+┌──────────────────────────────▼──────────────────────────────┐
+│ 5. UI Layer & Scoped DI (lib/features/feature/ui/)          │
+│    FeaturePage wraps RepositoryProvider & BlocProvider      │
+└─────────────────────────────────────────────────────────────┘
+```
 
+### Step 1: API Layer Implementation (`BaseApiService`)
+Create `packages/new_feature_repository/lib/src/api/new_feature_api.dart`:
 ```dart
-class ExplorerPage extends StatelessWidget {
-  const ExplorerPage({super.key});
+class NewFeatureApi extends BaseApiService {
+  NewFeatureApi({dynamic client}) : super(client);
+
+  Future<Result<List<Map<String, dynamic>>, Exception>> fetchFeatureData() async {
+    return handleResponse(
+      apiCall: () async {
+        final response = await client.get('/api/v1/new-feature');
+        return Result.success<List<Map<String, dynamic>>, Exception>(response.data);
+      },
+      onSuccess: (result) => result as Result<List<Map<String, dynamic>>, Exception>,
+      logTag: 'NewFeatureApi.fetchFeatureData',
+    );
+  }
+}
+```
+
+### Step 2: DTO & Mapper Implementation (`BaseMapper`)
+Create `packages/new_feature_repository/lib/src/mappers/feature_mapper.dart`:
+```dart
+class FeatureMapper extends BaseMapper<FeatureEntity, FeatureDto> {
+  const FeatureMapper();
+  @override
+  FeatureEntity mapToEntity(FeatureDto dto) => FeatureEntity(id: dto.id, title: dto.title);
+  @override
+  FeatureDto mapToDto(FeatureEntity entity) => FeatureDto(id: entity.id, title: entity.title);
+}
+```
+
+### Step 3: Repository Layer Implementation (`BaseRepository`)
+Create `packages/new_feature_repository/lib/src/new_feature_repository.dart`:
+```dart
+class NewFeatureRepositoryImpl extends BaseRepository implements NewFeatureRepository {
+  final NewFeatureApi _api;
+  final FeatureMapper _mapper;
+
+  NewFeatureRepositoryImpl({NewFeatureApi? api, FeatureMapper? mapper})
+      : _api = api ?? NewFeatureApi(),
+        _mapper = mapper ?? const FeatureMapper();
+
+  @override
+  Future<Result<List<FeatureEntity>, Exception>> getFeatureData() async {
+    return handleRepositoryCall(
+      call: () async {
+        final result = await _api.fetchFeatureData();
+        return result.fold(
+          (jsonList) {
+            final dtos = jsonList.map((j) => FeatureDto.fromJson(j)).toList();
+            return Result.success(_mapper.mapToEntityList(dtos));
+          },
+          (failure) => Result.failure(failure),
+        );
+      },
+      logTag: 'NewFeatureRepositoryImpl.getFeatureData',
+    );
+  }
+}
+```
+
+### Step 4: BLoC / Cubit Layer Implementation (`flutter_bloc`)
+Create `lib/features/new_feature/bloc/new_feature_cubit.dart`:
+```dart
+class NewFeatureCubit extends Cubit<NewFeatureState> {
+  final NewFeatureRepository repository;
+  NewFeatureCubit({required this.repository}) : super(NewFeatureInitial());
+
+  Future<void> loadData() async {
+    emit(NewFeatureLoading());
+    final result = await repository.getFeatureData();
+    result.fold(
+      (entities) => emit(NewFeatureLoaded(entities)),
+      (failure) => emit(NewFeatureError(failure.toString())),
+    );
+  }
+}
+```
+
+### Step 5: UI Layer & Scoped On-Demand DI Implementation
+Create `lib/features/new_feature/ui/new_feature_page.dart`:
+```dart
+class NewFeaturePage extends StatelessWidget {
+  const NewFeaturePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider<ExplorerRepository>(
-      create: (context) => ExplorerRepositoryImpl(api: FakeExplorerApi()),
-      child: BlocProvider<ExplorerBloc>(
-        create: (context) => ExplorerBloc(
-          repository: context.read<ExplorerRepository>(),
-        )..add(const LoadExplorerItems()),
-        child: const ExplorerView(),
+    return RepositoryProvider<NewFeatureRepository>(
+      create: (context) => NewFeatureRepositoryImpl(),
+      child: BlocProvider<NewFeatureCubit>(
+        create: (context) => NewFeatureCubit(
+          repository: context.read<NewFeatureRepository>(),
+        )..loadData(),
+        child: const NewFeatureView(),
       ),
     );
   }
 }
 ```
 
-### Benefits:
-* **Memory Efficiency:** Blocs and Repositories are instantiated on-demand when the route opens and disposed automatically when popped.
-* **Decoupled Testing:** `ExplorerView` can be widget-tested by passing a mock `ExplorerBloc` without bootstrapping the whole app.
+### Step 6: Route Registration in AppRouter
+```dart
+class AppRouter {
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case AppRoutes.newFeature:
+        return MaterialPageRoute(builder: (_) => const NewFeaturePage());
+      default:
+        return MaterialPageRoute(builder: (_) => const Scaffold());
+    }
+  }
+}
+```
 
 ---
 
 ## 4. Multi-Flavor White-Label Strategy
 
-Deploying Client A (`Alpha Brand`) vs Client B (`Beta Mobility`) using dedicated entry points in `lib/`:
+Deploying Client A (`Alpha Brand`) vs Client B (`Beta Brand`) using dedicated entry points in `lib/`:
 
 ```dart
 // lib/main_client_a.dart

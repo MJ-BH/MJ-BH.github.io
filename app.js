@@ -2,7 +2,7 @@ const articles = {
   flutter_monorepo: `
     <h1>Architecting Enterprise Monorepo Flutter Applications</h1>
     <p><em>By Mouhamed Jihed BENHASSEN • Senior Full-Stack & Mobile Developer</em></p>
-    <p><strong>GitHub Repository:</strong> <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" style="color: var(--accent-cyan);">MJ-BH/blueprint-project-flutter</a> (Public)</p>
+    <p><strong>GitHub Repository:</strong> <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" style="color: var(--accent-cyan);">MJ-BH/blueprint-project-flutter</a> (Public Open-Source)</p>
     <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;" />
     <h2>Core Pillars of the Architecture</h2>
     <ol style="padding-left: 1.2rem; line-height: 1.8;">
@@ -10,6 +10,16 @@ const articles = {
       <li><strong>Result Pattern & Base Infrastructure:</strong> Safe error handling using <code>Result&lt;S, E&gt;</code>, <code>BaseApiService</code>, <code>BaseRepository</code>, <code>BaseMapper&lt;Entity, Dto&gt;</code>, and <code>Logger</code>.</li>
       <li><strong>Scoped On-Demand Dependency Injection:</strong> Injecting repositories and BLoCs on-demand at feature Page/View boundaries rather than cluttering the global <code>main.dart</code>.</li>
       <li><strong>Multi-Entrypoint White-Label Support:</strong> Running separate brand apps (<code>main_client_a.dart</code>, <code>main_client_b.dart</code>) from the exact same codebase.</li>
+    </ol>
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;" />
+    <h2>How to Add a Feature (6-Step Architecture Flow)</h2>
+    <ol style="padding-left: 1.2rem; line-height: 1.8;">
+      <li><strong>Step 1 (API Layer):</strong> Extend <code>BaseApiService</code> in <code>packages/feature_repository/lib/src/api/</code> and return <code>Result&lt;Data, Exception&gt;</code> via <code>handleResponse()</code>.</li>
+      <li><strong>Step 2 (Mapper Layer):</strong> Extend <code>BaseMapper&lt;Entity, Dto&gt;</code> for deterministic DTO-to-Entity conversion.</li>
+      <li><strong>Step 3 (Repository Layer):</strong> Extend <code>BaseRepository</code>, calling API and mapping DTOs to Domain Entities.</li>
+      <li><strong>Step 4 (BLoC Layer):</strong> Create Cubit/BLoC state emitting <code>Loading</code>, <code>Loaded</code>, and <code>Error</code> using <code>result.fold()</code>.</li>
+      <li><strong>Step 5 (UI Layer & Scoped DI):</strong> Decouple <code>FeaturePage</code> (wrapping <code>RepositoryProvider</code> & <code>BlocProvider</code> on demand) from <code>FeatureView</code>.</li>
+      <li><strong>Step 6 (Route Registration):</strong> Register route in <code>lib/core/routing/app_router.dart</code>.</li>
     </ol>
   `,
   principles: `
