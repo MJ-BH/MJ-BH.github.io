@@ -1,4 +1,17 @@
 const articles = {
+  flutter_monorepo: `
+    <h1>Architecting Enterprise Monorepo Flutter Applications</h1>
+    <p><em>By Mouhamed Jihed BENHASSEN • Senior Full-Stack & Mobile Developer</em></p>
+    <p><strong>GitHub Repository:</strong> <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" style="color: var(--accent-cyan);">MJ-BH/blueprint-project-flutter</a> (Public)</p>
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;" />
+    <h2>Core Pillars of the Architecture</h2>
+    <ol style="padding-left: 1.2rem; line-height: 1.8;">
+      <li><strong>VGV Monorepo Package Isolation:</strong> Extracting core infrastructure (<code>packages/core</code>), design tokens (<code>packages/app_ui</code>), and domain repositories (<code>packages/explorer_repository</code>) into independent local packages.</li>
+      <li><strong>Result Pattern & Base Infrastructure:</strong> Safe error handling using <code>Result&lt;S, E&gt;</code>, <code>BaseApiService</code>, <code>BaseRepository</code>, <code>BaseMapper&lt;Entity, Dto&gt;</code>, and <code>Logger</code>.</li>
+      <li><strong>Scoped On-Demand Dependency Injection:</strong> Injecting repositories and BLoCs on-demand at feature Page/View boundaries rather than cluttering the global <code>main.dart</code>.</li>
+      <li><strong>Multi-Entrypoint White-Label Support:</strong> Running separate brand apps (<code>main_client_a.dart</code>, <code>main_client_b.dart</code>) from the exact same codebase.</li>
+    </ol>
+  `,
   principles: `
     <h1>Mouhamed Jihed BENHASSEN — Engineering Principles</h1>
     <p><em>Synthesized from Hera, Oolab, beans_site, ASWAN, and Maxit</em></p>

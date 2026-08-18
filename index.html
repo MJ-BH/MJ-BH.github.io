@@ -42,7 +42,7 @@
         </p>
         <div class="hero-buttons">
           <button class="btn-primary" onclick="openArticleModal('principles')"><i class="fa-solid fa-compass"></i> My Core Dev Principles</button>
-          <a href="#projects" class="btn-secondary"><i class="fa-solid fa-code"></i> Explore Blueprints & Repos</a>
+          <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" class="btn-secondary"><i class="fa-brands fa-github"></i> Public Flutter Blueprint</a>
         </div>
       </div>
     </section>
@@ -56,19 +56,19 @@
         <div class="stat-card" style="text-align: left; padding: 1.8rem;">
           <div style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-gavel"></i></div>
           <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Governance First</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every repo begins with a strict <code>RULES.md</code> or <code>AGENTS.md</code> setting layer boundaries and zero UI data pollution.</p>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every repo begins with a strict <code>RULES.md</code> setting layer boundaries and zero UI data pollution.</p>
         </div>
 
         <div class="stat-card" style="text-align: left; padding: 1.8rem;">
           <div style="color: var(--accent-blue); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-cubes"></i></div>
           <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Monorepo Clean Arch</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">Domain logic, repositories, and design systems are extracted into decoupled packages (<code>packages/app_ui</code>).</p>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Domain logic, repositories, and design systems are extracted into decoupled packages (<code>packages/core</code>, <code>packages/app_ui</code>).</p>
         </div>
 
         <div class="stat-card" style="text-align: left; padding: 1.8rem;">
           <div style="color: var(--accent-purple); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-shield-halved"></i></div>
-          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Zero-Crash Policy</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">Automatic JWT token refresh interceptors, sealed UI state interfaces (<code>Loading</code>, <code>Success</code>, <code>Error</code>), and offline caches.</p>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Zero-Crash Resilience</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Automatic JWT token refresh interceptors, sealed UI state interfaces (<code>Loading</code>, <code>Success</code>, <code>Error</code>), and Result pattern error handling.</p>
         </div>
       </div>
     </section>
@@ -94,8 +94,8 @@
     </div>
 
     <!-- Technical Profile Highlight Banner -->
-    <section class="highlight-banner" id="matrix">
-      <div class="highlight-content">
+    <section class="trvl-banner" id="matrix">
+      <div class="trvl-content">
         <h2><i class="fa-solid fa-layer-group" style="color: var(--accent-cyan);"></i> Enterprise Architecture Competency Matrix</h2>
         <p>
           Comprehensive response matrix covering White-Label Architecture, Build Flavors, WebView JavaScript Bridges, and Flutter BLoC state management based on enterprise experience with Maxit & ASWAN.
@@ -117,26 +117,26 @@
       </div>
 
       <div class="projects-grid">
-        <!-- Hera Blueprint -->
+        <!-- Blueprint Project Flutter (PUBLIC) -->
         <div class="project-card" data-category="blueprint">
           <div>
-            <span class="project-tag">Hera Architecture</span>
+            <span class="project-tag" style="color: #10b981;">🌐 Public Open-Source Blueprint</span>
             <h3>blueprint-project-flutter</h3>
-            <p>Clean architecture monorepo starter with strict <code>RULES.md</code>, standalone <code>packages/app_ui</code>, <code>packages/core</code>, and Cubit state management.</p>
+            <p>VGV-inspired Flutter monorepo architecture featuring <code>packages/core</code>, <code>packages/app_ui</code>, Result pattern, FakeExplorerApi, and Scoped Dependency Injection.</p>
             <div class="tech-stack-pills">
               <span class="pill">Flutter</span>
-              <span class="pill">Monorepo</span>
-              <span class="pill">RULES.md</span>
-              <span class="pill">Cubit</span>
+              <span class="pill">VGV Monorepo</span>
+              <span class="pill">Result Pattern</span>
+              <span class="pill">Scoped DI</span>
             </div>
           </div>
-          <button onclick="openArticleModal('principles')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">View Architecture Rules →</button>
+          <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Public GitHub Repo →</a>
         </div>
 
         <!-- Oolab Blueprint -->
         <div class="project-card" data-category="blueprint">
           <div>
-            <span class="project-tag">Oolab Architecture</span>
+            <span class="project-tag">Android Architecture Blueprint</span>
             <h3>android-basic-clean-architecture</h3>
             <p>Android Kotlin Jetpack Compose template featuring Koin DI, Ktor Auth, type-safe navigation, and sealed <code>UiState</code> interfaces.</p>
             <div class="tech-stack-pills">
@@ -196,22 +196,7 @@
           <button onclick="openArticleModal('whitelabel')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">Read Architecture Blueprint →</button>
         </div>
 
-        <!-- Hybrid Bridge Blueprint -->
-        <div class="project-card" data-category="blueprint">
-          <div>
-            <span class="project-tag">Open-Source Blueprint</span>
-            <h3>flutter-hybrid-bridge-starter</h3>
-            <p>WebView starter kit demonstrating bi-directional JavaScript channels, OAuth2 JWT token injection, cookie sharing, and deep link interception.</p>
-            <div class="tech-stack-pills">
-              <span class="pill">WebView</span>
-              <span class="pill">JS Bridge</span>
-              <span class="pill">Cookie Sync</span>
-            </div>
-          </div>
-          <button onclick="openArticleModal('webview')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">Read Hybrid Blueprint →</button>
-        </div>
-
-        <!-- EventoBack Microservices -->
+        <!-- Microservices Blueprint -->
         <div class="project-card" data-category="backend">
           <div>
             <span class="project-tag">Backend Microservices</span>
@@ -235,6 +220,12 @@
       <p class="section-subtitle">Deep dives into Flutter architecture, high scale systems, and hybrid web integration.</p>
 
       <div class="articles-grid">
+        <div class="article-card" onclick="openArticleModal('flutter_monorepo')">
+          <div class="article-meta">VGV MONOREPO • FLUTTER BLUEPRINT</div>
+          <h3>Architecting Enterprise Monorepo Flutter Applications</h3>
+          <p>Full breakdown of VGV package strategy, Result pattern error handling, BaseApiService, and Scoped Dependency Injection.</p>
+        </div>
+
         <div class="article-card" onclick="openArticleModal('whitelabel')">
           <div class="article-meta">ARCHITECTURE • FLUTTER FLAVORS</div>
           <h3>Architecting White-Label Flutter Applications</h3>
