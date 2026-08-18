@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouhamed Jihed BENHASSEN — Senior Full-Stack & Mobile Developer</title>
+  <meta name="description" content="Portfolio of Mouhamed Jihed BENHASSEN, Senior Full-Stack & Mobile Developer specializing in Flutter (BLoC), Android Native, Java, and Spring Boot Microservices.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Orbs -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">MJ<span>.BENHASSEN</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#principles">Dev Principles</a></li>
+      <li><a href="#projects">Projects & Blueprints</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#matrix">Technical Matrix</a></li>
+      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-content">
+        <div class="badge-tech">
+          <i class="fa-solid fa-bolt"></i> Senior Full-Stack & Mobile Developer
+        </div>
+        <h1>Architecting <span>High-Scale Mobile Apps</span> & Enterprise Backends</h1>
+        <p>
+          Over 6 years of experience building cross-platform Flutter (BLoC) applications, native mobile solutions, 
+          and Spring Boot microservices. Specializing in White-Label multi-brand architectures, hybrid WebViews, and high-concurrency systems serving millions of users.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="openArticleModal('principles')"><i class="fa-solid fa-compass"></i> My Core Dev Principles</button>
+          <a href="#projects" class="btn-secondary"><i class="fa-solid fa-code"></i> Explore Blueprints & Repos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles Banner -->
+    <section class="section" id="principles">
+      <h2 class="section-title">My Software Engineering Principles</h2>
+      <p class="section-subtitle">Synthesized from enterprise & monorepo projects: <strong>Hera</strong>, <strong>Oolab</strong>, <strong>beans_site</strong>, <strong>ASWAN</strong>, and <strong>Maxit</strong>.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div class="stat-card" style="text-align: left; padding: 1.8rem;">
+          <div style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-gavel"></i></div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Governance First</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every repo begins with a strict <code>RULES.md</code> or <code>AGENTS.md</code> setting layer boundaries and zero UI data pollution.</p>
+        </div>
+
+        <div class="stat-card" style="text-align: left; padding: 1.8rem;">
+          <div style="color: var(--accent-blue); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-cubes"></i></div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Monorepo Clean Arch</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Domain logic, repositories, and design systems are extracted into decoupled packages (<code>packages/app_ui</code>).</p>
+        </div>
+
+        <div class="stat-card" style="text-align: left; padding: 1.8rem;">
+          <div style="color: var(--accent-purple); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Zero-Crash Policy</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Automatic JWT token refresh interceptors, sealed UI state interfaces (<code>Loading</code>, <code>Success</code>, <code>Error</code>), and offline caches.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Ribbon -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">1M+</div>
+        <div class="stat-label">Active Users Served (Maxit)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5M+</div>
+        <div class="stat-label">App Downloads (MyInwi)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Years Enterprise Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10k+</div>
+        <div class="stat-label">Downloads (ASWAN App)</div>
+      </div>
+    </div>
+
+    <!-- Technical Profile Highlight Banner -->
+    <section class="highlight-banner" id="matrix">
+      <div class="highlight-content">
+        <h2><i class="fa-solid fa-layer-group" style="color: var(--accent-cyan);"></i> Enterprise Architecture Competency Matrix</h2>
+        <p>
+          Comprehensive response matrix covering White-Label Architecture, Build Flavors, WebView JavaScript Bridges, and Flutter BLoC state management based on enterprise experience with Maxit & ASWAN.
+        </p>
+        <button class="btn-primary" onclick="openArticleModal('matrix')"><i class="fa-solid fa-eye"></i> View Technical Competency Matrix</button>
+      </div>
+    </section>
+
+    <!-- Projects & Blueprints Section -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Featured Projects & Blueprint Suite</h2>
+      <p class="section-subtitle">A collection of enterprise solutions and open-source architecture blueprints.</p>
+
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterProjects('all')">All Repositories</button>
+        <button class="filter-btn" onclick="filterProjects('flutter')">Flutter & Hybrid</button>
+        <button class="filter-btn" onclick="filterProjects('backend')">Backend & Microservices</button>
+        <button class="filter-btn" onclick="filterProjects('blueprint')">Architecture Blueprints</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Hera Blueprint -->
+        <div class="project-card" data-category="blueprint">
+          <div>
+            <span class="project-tag">Hera Architecture</span>
+            <h3>blueprint-project-flutter</h3>
+            <p>Clean architecture monorepo starter with strict <code>RULES.md</code>, standalone <code>packages/app_ui</code>, <code>packages/core</code>, and Cubit state management.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Flutter</span>
+              <span class="pill">Monorepo</span>
+              <span class="pill">RULES.md</span>
+              <span class="pill">Cubit</span>
+            </div>
+          </div>
+          <button onclick="openArticleModal('principles')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">View Architecture Rules →</button>
+        </div>
+
+        <!-- Oolab Blueprint -->
+        <div class="project-card" data-category="blueprint">
+          <div>
+            <span class="project-tag">Oolab Architecture</span>
+            <h3>android-basic-clean-architecture</h3>
+            <p>Android Kotlin Jetpack Compose template featuring Koin DI, Ktor Auth, type-safe navigation, and sealed <code>UiState</code> interfaces.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Kotlin</span>
+              <span class="pill">Compose</span>
+              <span class="pill">Koin</span>
+              <span class="pill">Ktor</span>
+            </div>
+          </div>
+          <button onclick="openArticleModal('principles')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">View Architecture Rules →</button>
+        </div>
+
+        <!-- ASWAN -->
+        <div class="project-card" data-category="flutter">
+          <div>
+            <span class="project-tag">Enterprise Mobile</span>
+            <h3>ASWAN Dropshipping</h3>
+            <p>Full-stack mobile app (+10k downloads) built with Flutter (BLoC) and Spring Boot backend. Features Redis caching, JWT auth, and GitLab CI/CD pipelines.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Flutter</span>
+              <span class="pill">BLoC</span>
+              <span class="pill">Spring Boot</span>
+              <span class="pill">Redis</span>
+            </div>
+          </div>
+          <a href="https://github.com/MJ-BH" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Details →</a>
+        </div>
+
+        <!-- Maxit Super-App -->
+        <div class="project-card" data-category="flutter">
+          <div>
+            <span class="project-tag">Telecom Super-App</span>
+            <h3>Maxit & MyOrange</h3>
+            <p>Super-app frontend serving 1M+ active users. Integrated mobile payments, content distribution, and microservices with Flutter BLoC.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Flutter</span>
+              <span class="pill">Microservices</span>
+              <span class="pill">OAuth2</span>
+              <span class="pill">Clean Arch</span>
+            </div>
+          </div>
+          <a href="https://github.com/MJ-BH" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Details →</a>
+        </div>
+
+        <!-- White-Label Blueprint -->
+        <div class="project-card" data-category="blueprint">
+          <div>
+            <span class="project-tag">Open-Source Blueprint</span>
+            <h3>flutter-whitelabel-starter</h3>
+            <p>Production-grade Flutter template featuring dynamic build flavors, flavor entry points, remote feature flags, and custom dynamic theme extensions.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Flutter Flavors</span>
+              <span class="pill">Design Tokens</span>
+              <span class="pill">Remote Config</span>
+            </div>
+          </div>
+          <button onclick="openArticleModal('whitelabel')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">Read Architecture Blueprint →</button>
+        </div>
+
+        <!-- Hybrid Bridge Blueprint -->
+        <div class="project-card" data-category="blueprint">
+          <div>
+            <span class="project-tag">Open-Source Blueprint</span>
+            <h3>flutter-hybrid-bridge-starter</h3>
+            <p>WebView starter kit demonstrating bi-directional JavaScript channels, OAuth2 JWT token injection, cookie sharing, and deep link interception.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">WebView</span>
+              <span class="pill">JS Bridge</span>
+              <span class="pill">Cookie Sync</span>
+            </div>
+          </div>
+          <button onclick="openArticleModal('webview')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">Read Hybrid Blueprint →</button>
+        </div>
+
+        <!-- EventoBack Microservices -->
+        <div class="project-card" data-category="backend">
+          <div>
+            <span class="project-tag">Backend Microservices</span>
+            <h3>microservices-blueprint-architecture</h3>
+            <p>Spring Boot backend platform managing event bookings, REST API endpoints, JWT token authentication, and relational database persistence.</p>
+            <div class="tech-stack-pills">
+              <span class="pill">Java</span>
+              <span class="pill">Spring Boot</span>
+              <span class="pill">REST API</span>
+              <span class="pill">PostgreSQL</span>
+            </div>
+          </div>
+          <a href="https://github.com/MJ-BH/microservices-blueprint-architecture" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Repository →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Articles Section -->
+    <section class="section" id="articles">
+      <h2 class="section-title">Technical Articles & Engineering Guides</h2>
+      <p class="section-subtitle">Deep dives into Flutter architecture, high scale systems, and hybrid web integration.</p>
+
+      <div class="articles-grid">
+        <div class="article-card" onclick="openArticleModal('whitelabel')">
+          <div class="article-meta">ARCHITECTURE • FLUTTER FLAVORS</div>
+          <h3>Architecting White-Label Flutter Applications</h3>
+          <p>Learn how to deploy 1 core Flutter codebase across multiple client brands using build flavors, theme extensions, and remote feature flags.</p>
+        </div>
+
+        <div class="article-card" onclick="openArticleModal('webview')">
+          <div class="article-meta">HYBRID MOBILE • SECURITY</div>
+          <h3>Production-Grade Hybrid WebViews in Flutter</h3>
+          <p>Bi-directional JS communication, single sign-on OAuth2 cookie injection, and navigation delegate interception patterns.</p>
+        </div>
+
+        <div class="article-card" onclick="openArticleModal('scale')">
+          <div class="article-meta">HIGH SCALE • SPRING BOOT</div>
+          <h3>Scaling Flutter to 1 Million Active Users</h3>
+          <p>Combining BLoC state management, Clean Architecture, and Spring Boot microservices with Redis caching for massive scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <p>© 2026 Mouhamed Jihed BENHASSEN. Built with performance & passion.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="https://github.com/MJ-BH" target="_blank" style="color: var(--accent-cyan); margin: 0 10px;">GitHub</a> |
+        <a href="https://linkedin.com/in/your-profile" target="_blank" style="color: var(--accent-cyan); margin: 0 10px;">LinkedIn</a> |
+        <a href="mailto:m.jihedbh@gmail.com" style="color: var(--accent-cyan); margin: 0 10px;">Email</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Article Modal -->
+  <div class="modal-backdrop" id="articleModal">
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeArticleModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modalContent" class="markdown-view">
+        <!-- Loaded via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
