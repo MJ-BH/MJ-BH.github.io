@@ -37,7 +37,7 @@
         </div>
         <h1>Architecting <span>High-Scale Mobile Apps</span> & Enterprise Backends</h1>
         <p>
-          Over 6 years of experience building cross-platform Flutter (BLoC) applications, native mobile solutions, 
+          Over 6 years of experience building cross-platform Flutter (BLoC) applications, native Kotlin Jetpack Compose solutions, 
           and Spring Boot microservices. Specializing in White-Label multi-brand architectures, hybrid WebViews, and high-concurrency systems serving millions of users.
         </p>
         <div class="hero-buttons">
@@ -50,13 +50,13 @@
     <!-- Principles Banner -->
     <section class="section" id="principles">
       <h2 class="section-title">My Software Engineering Principles</h2>
-      <p class="section-subtitle">Synthesized from enterprise & monorepo projects: <strong>Hera</strong>, <strong>Oolab</strong>, <strong>beans_site</strong>, <strong>ASWAN</strong>, and <strong>Maxit</strong>.</p>
+      <p class="section-subtitle">Synthesized from enterprise & open-source projects: <strong>Flutter Monorepo Blueprint</strong>, <strong>Android Clean Architecture</strong>, <strong>ASWAN</strong>, and <strong>Maxit</strong>.</p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
         <div class="stat-card" style="text-align: left; padding: 1.8rem;">
           <div style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-gavel"></i></div>
           <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Governance First</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every repo begins with a strict <code>RULES.md</code> setting layer boundaries and zero UI data pollution.</p>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every repo begins with a strict <code>RULES.md</code> or <code>AGENTS.md</code> setting layer boundaries and zero UI data pollution.</p>
         </div>
 
         <div class="stat-card" style="text-align: left; padding: 1.8rem;">
@@ -133,10 +133,10 @@
           <a href="https://github.com/MJ-BH/blueprint-project-flutter" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Public GitHub Repo →</a>
         </div>
 
-        <!-- Oolab Blueprint -->
+        <!-- Android Clean Architecture Blueprint (PUBLIC) -->
         <div class="project-card" data-category="blueprint">
           <div>
-            <span class="project-tag">Android Architecture Blueprint</span>
+            <span class="project-tag" style="color: #10b981;">🌐 Public Open-Source Blueprint</span>
             <h3>android-basic-clean-architecture</h3>
             <p>Android Kotlin Jetpack Compose template featuring Koin DI, Ktor Auth, type-safe navigation, and sealed <code>UiState</code> interfaces.</p>
             <div class="tech-stack-pills">
@@ -146,7 +146,7 @@
               <span class="pill">Ktor</span>
             </div>
           </div>
-          <button onclick="openArticleModal('principles')" style="background: none; border: none; color: var(--accent-cyan); cursor: pointer; font-weight: 600; text-align: left;">View Architecture Rules →</button>
+          <a href="https://github.com/MJ-BH/android-basic-clean-architecture" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">View Public GitHub Repo →</a>
         </div>
 
         <!-- ASWAN -->
@@ -217,13 +217,19 @@
     <!-- Technical Articles Section -->
     <section class="section" id="articles">
       <h2 class="section-title">Technical Articles & Engineering Guides</h2>
-      <p class="section-subtitle">Deep dives into Flutter architecture, high scale systems, and hybrid web integration.</p>
+      <p class="section-subtitle">Deep dives into Flutter architecture, Kotlin Jetpack Compose, and Spring Boot backend engineering.</p>
 
       <div class="articles-grid">
         <div class="article-card" onclick="openArticleModal('flutter_monorepo')">
           <div class="article-meta">VGV MONOREPO • FLUTTER BLUEPRINT</div>
           <h3>Architecting Enterprise Monorepo Flutter Applications</h3>
           <p>Full breakdown of VGV package strategy, Result pattern error handling, BaseApiService, and Scoped Dependency Injection.</p>
+        </div>
+
+        <div class="article-card" onclick="openArticleModal('android_clean_arch')">
+          <div class="article-meta">KOTLIN • JETPACK COMPOSE</div>
+          <h3>Modern Android Clean Architecture with Jetpack Compose & Koin</h3>
+          <p>Building crash-resilient Android apps with StateFlow, Koin DI, Ktor Network Interceptors, and sealed UiState interfaces.</p>
         </div>
 
         <div class="article-card" onclick="openArticleModal('whitelabel')">
@@ -236,12 +242,6 @@
           <div class="article-meta">HYBRID MOBILE • SECURITY</div>
           <h3>Production-Grade Hybrid WebViews in Flutter</h3>
           <p>Bi-directional JS communication, single sign-on OAuth2 cookie injection, and navigation delegate interception patterns.</p>
-        </div>
-
-        <div class="article-card" onclick="openArticleModal('scale')">
-          <div class="article-meta">HIGH SCALE • SPRING BOOT</div>
-          <h3>Scaling Flutter to 1 Million Active Users</h3>
-          <p>Combining BLoC state management, Clean Architecture, and Spring Boot microservices with Redis caching for massive scale.</p>
         </div>
       </div>
     </section>
